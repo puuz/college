@@ -1,0 +1,203 @@
+/**
+* @file Persona.cpp
+*
+* @brief The persona's constructors and functions
+*
+* The persona's constructors and functions to add,
+* remove, get, and manipulate the private data.
+*
+* @author Sam Farris
+* @date 12/9/2021
+*/
+
+#include "Persona.h"
+
+/** max number of item pointers in the array */
+const int MAX_ITEMS = 5;
+
+//project 3
+Persona::Persona(const Persona & p) {
+	personaCode = p.getPersonaCode();
+	id = p.getId();
+	//loop over items to create if current isn't nullptr or set if it is nullptr
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		if (p.items[i] != nullptr) {
+			items[i] = new Item(p.getItem(i)->getItemCode(), p.getItem(i)->getName(), p.getItem(i)->getQuickKey());
+		}
+		else {
+			items[i] = nullptr;
+		}
+	}
+}
+Persona & Persona::operator = (const Persona & p) {
+	//delete current from memory
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		delete items[i];
+	}
+	//same thing as constructor
+	personaCode = p.getPersonaCode();
+	id = p.getId();
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		if (p.items[i] != nullptr) {
+			items[i] = new Item(p.getItem(i)->getItemCode(), p.getItem(i)->getName(), p.getItem(i)->getQuickKey());
+		}
+		else {
+			items[i] = nullptr;
+		}
+	}
+	return *this;
+}
+//webcat wanted this here
+/**
+* @brief The insertion operator for the persona class.
+*
+* The insertion operator for the persona class. It'll output
+* the persona object used on the insertation in correct format
+* one by one. First the persona's id and code then each items
+* array.
+*
+* @param out The output stream to use on the insertion.
+* @param p The persona object to prompt to the output stream.
+*/
+std::ostream & operator << (std::ostream & out, const Persona & p) {
+	out << p.getId() << " "
+		<< p.getPersonaCode() << " ";
+	//prompt each item if isn't nullptr otherwise print - - -
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		if (p.items[i] != nullptr) {
+			out << p.getItem(i)->getItemCode() << " "
+				<< p.getItem(i)->getName() << " "
+				<< p.getItem(i)->getQuickKey() << " ";
+		}
+		else {
+			out << "- - - ";
+		}
+	}
+	return out;
+}
+//webcat wanted this here
+/**
+* @brief The extraction operator for the persona class.
+*
+* The extraction operator for the persona class. It'll first though
+* delete each item in the persona object from memory and set it to nullptr
+* then it'll start reading in the persona object's data. For the items
+* there will only be on new item object if all the read in data is a "-".
+*
+* @param in The input stream to use on the extraction.
+* @param p The persona object for deleting and reassigning.
+*/
+std::istream & operator >> (std::istream & in, Persona & p) {
+	//delete and assign nullptr to all current items in passed object
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		delete p.items[i];
+		p.items[i] = nullptr;
+	}
+	//start reassign
+	std::string nId;
+	std::string nPersonaCode;
+	in >> nId >> nPersonaCode;
+	p.id = nId;
+	p.personaCode = nPersonaCode;
+	//only create a new item if all item code, name, and quick key is "-"
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		std::string nItemCode;
+		std::string nName;
+		char nQuickKey;
+		in >> nItemCode >> nName >> nQuickKey;
+		if (nItemCode != "-" || nName != "-" || nQuickKey != '-') {
+			p.items[i] = new Item(nItemCode, nName, nQuickKey);
+		}
+	}
+	return in;
+}
+//lab 9
+Persona::Persona() {
+	personaCode = "NPC";
+	id = "unknown_0";
+	//set each item pointer to nullptr
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		items[i] = nullptr;
+	}
+}
+Persona::Persona(std::string nPersonaCode, std::string nId) {
+	personaCode = nPersonaCode;
+	id = nId;
+	//set each item pointer to nullptr
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		items[i] = nullptr;
+	}
+}
+Persona::~Persona() {
+	//delete each item pointer from memory
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		delete items[i];
+	}
+}
+std::string Persona::getPersonaCode() const {
+	return personaCode;
+}
+std::string Persona::getId() const {
+	return id;
+}
+const Item * Persona::getItem(int posOfItem) const {
+	//check if passed position is valid for array
+	if (posOfItem >= 0 && posOfItem < MAX_ITEMS) {
+		return items[posOfItem];
+	}
+	//if invalid position return nullptr
+	else {
+		return nullptr;
+	}
+}
+bool Persona::addItem(std::string nItemCode, std::string nName, char nQuickKey) {
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		//once item pointer is nullptr create a new item object and assign it to that item pointer
+		if (items[i] == nullptr) {
+			items[i] = new Item(nItemCode, nName, nQuickKey);
+			return true;
+		}
+	}
+	//array is full and don't have any nullptrs
+	return false;
+}
+bool Persona::removeItem(int posOfItem) {
+	//passed position is valid and isn't nullptr
+	if (getItem(posOfItem) != nullptr) {
+		//delete item pointer from memory
+		delete getItem(posOfItem);
+		//set item pointer to nullptr
+		items[posOfItem] = nullptr;
+		return true;
+	}
+	//invalid position or is nullptr
+	return false;
+}
+int Persona::countItems() const {
+	int count = 0;
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		//if item isn't nullptr then consider it an item
+		if (items[i] != nullptr) {
+			count++;
+		}
+	}
+	return count;
+}
+int Persona::findByKey(char findQuickKey) const {
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		//if item isn't nullptr and it's quickkey is same as passed key return array position
+		if (items[i] != nullptr && items[i]->getQuickKey() == findQuickKey) {
+			return i;
+		}
+	}
+	//returned value if key wasn't found
+	return -1;
+}
+void Persona::updateKey(char oldQuickKey, char newQuickKey) {
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		//if item isn't nullptr and it's quickkey is same as passed old key then update key to passed new key
+		if (items[i] != nullptr && items[i]->getQuickKey() == oldQuickKey) {
+			items[i]->updateQuickKey(newQuickKey);
+		}
+	}
+}

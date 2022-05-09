@@ -1,0 +1,6 @@
+this is my test text for a file which can be multiple lines
+
+like this and keep in mind the only way this would be identify
+as a email document would be if the document started with
+
+a keyword "title" otherwise everything else is good

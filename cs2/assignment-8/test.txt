@@ -1,0 +1,7 @@
+title this is my test title for an email which is only one line
+sender this is my test sender for an email which is only one line
+recipient this is my test recipient for an email which is only one line
+this is my test text for an email which can be multiple lines
+
+like this and you could also identify this as
+a body for an email as well
