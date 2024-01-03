@@ -1,0 +1,37 @@
+h1 {
+    color: white;
+    text-shadow: 1.25px 1.25px grey;
+    text-align: center;
+}
+
+p {
+    color: white;
+}
+
+.items {
+    border: 2.5px solid gray;
+    border-radius: 25px;
+    border-spacing: 20px 0px;
+    padding: 10px;
+}
+
+.items th {
+    text-align: left;
+}
+
+.items tr {
+    color: white;
+}
+
+.goback {
+    margin-top: 20px;
+}
+
+.goback a {
+    color: black;
+    background-color: white;
+    border: 2.5px solid gray;
+    border-radius: 25px;
+    padding: 5px;
+    text-decoration: none;
+}

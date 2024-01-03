@@ -1,0 +1,81 @@
+h2 {
+    color: red;
+}
+
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+ul {
+    list-style-type: square;
+}
+
+.first {
+    list-style-type: disc;
+}
+
+.second {
+    list-style-type: square;
+}
+
+.third {
+    list-style-type: circle;
+}
+
+#movies {
+    color: mediumseagreen;
+    font-family: monospace;
+}
+
+#hobbies {
+    color: mediumslateblue;
+    font-family: cursive;
+}
+
+#websites {
+    color: mediumvioletred;
+    font-family: fantasy;
+}
+
+a:hover {
+    color: red;
+}
+
+img {
+    width: 25%;
+    border: 2px solid black;
+}
+
+td {
+    background-color: yellow;
+    text-align: center;
+}
+
+th {
+    background-color: yellow;
+}
+
+.ict103 {
+    color: purple;
+}
+
+.cs125 {
+    color: red;
+}
+
+.cs248 {
+    color: chocolate;
+}
+
+.cnit301 {
+    color: green;
+}
+
+#cnit382 {
+    color: blue;
+}
+
+#lunch {
+    color: blueviolet
+}

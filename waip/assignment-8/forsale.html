@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Gym Equipment For Sale</title>
+    <link href="forsale.css" rel="stylesheet" type="text/css">
+    <script src="forsale.js"></script>
+</head>
+<body background="metal.jpg">
+    <h1>Scuba Gear For Sale</h1>
+    <h2>Not for real - This is a school project</h2>
+    <p>The following items are used for Scuba diving. Please seek appropriate training before diving, as it can be dangerous</p>
+    <form name="orderform" action="ordersummary.php" method="post">
+        <table class="products">
+            <tr>
+                <td><img src="press.png" alt="Plate Loaded Incline Press"></td>
+                <td>
+                    Plate Loaded Incline Press<br>
+                    Price - $3,600.00<br>
+                    <label for="press">Order Now: </label>
+                    <input class="items" type="checkbox" name="items[Plate Loaded Incline Press]" value="3,600.00" id="press">
+                </td>
+                <td><img src="row.png" alt="Plate Loaded Seated Row"></td>
+                <td>
+                    Plate Loaded Seated Row<br>
+                    Price - $3,065.00<br>
+                    <label for="row">Order Now: </label>
+                    <input class="items" type="checkbox" name="items[Plate Loaded Seated Row]" value="3,065.00" id="row">
+                </td>
+            </tr>
+            <tr>
+                <td><img src="bench.png" alt="Adjustable Bench"></td>
+                <td>
+                    Adjustable Bench<br>
+                    Price - $675.00<br>
+                    <label for="bench">Order Now: </label>
+                    <input class="items" type="checkbox" name="items[Adjustable Bench]" value="675.00" id="bench">
+                </td>
+                <td><img src="handles.png" alt="KAZ Handles"></td>
+                <td>
+                    KAZ Handles<br>
+                    Price - $125.00<br>
+                    <label for="handles">Order Now: </label>
+                    <input class="items" type="checkbox" name="items[KAZ Handles]" value="125.00" id="handles">
+                </td>
+            </tr>
+        </table>
+        <fieldset class = 'order'>
+            <legend>Order Form</legend>
+
+            <label class="heading" for="firstname" id="firstnamelabel">First Name:</label>
+            <input type="text" name="firstname" id="firstname"><br>
+
+            <label class="heading" for="lastname" id="lastnamelabel">Last Name:</label>
+            <input type="text" name="lastname" id="lastname"><br>
+
+            <label class="heading" for="street" id="streetlabel">Street:</label>
+            <input type="text" name="street" id="street" size="40"><br>
+
+            <label class="heading" for="city" id="citylabel">City:</label>
+            <input type="text" name="city" id="city"><br>
+
+            <label class="heading" for="state">State:</label>
+            <input type="text" name="state" id="state" size="2"><br>
+
+            <label class="heading" for="zip">Zip:</label>
+            <input type="text" name="zip" id="zip" size="5"><br>
+
+            <label class="heading">Credit Card:</label>
+            <label><input type="radio" name="credit" value="mc">Mastercard</label>
+            <label><input type="radio" name="credit" value="visa">Visa</label>
+            <label><input type="radio" name="credit" value="ae">American Express</label><br>
+
+            <button class="submit" type="button" onclick="submitForm()">Place Order</button>
+        </fieldset>
+    </form>
+</body>
+</html>
