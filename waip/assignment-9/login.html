@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sign In</title>
+        <link href="login.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="background">
+            <form class="login" id="info-form" action="todo.php" method="POST">
+                <span id="info-title">Login</span>
+                <input type="text" name="username" id="username" oninput="inputAction()" placeholder="Username" required>
+                <span class="error" id="username-error"></span>
+                <input type="password" name="password" id="password" oninput="inputAction()" placeholder="Password" required>
+                <span class="error" id="password-error"></span>
+                <input type="password" name="confirm-password" id="confirm-password" oninput="inputAction()" placeholder="Confirm Password">
+                <span class="error" id="confirm-password-error"></span>
+                <button type="button" id="submit-info" onclick="submitInfoAction()">Login</button>
+                <span class="error" id="submit-error"></span>
+                <a id="switch-form" onclick="switchFormAction()">Don't have an account?</a>
+            </form>
+        </div>
+        <script src="login.js"></script>
+    </body>
+</html>

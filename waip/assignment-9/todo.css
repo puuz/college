@@ -1,0 +1,122 @@
+* {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+    color: #f0f0f0;
+}
+.background {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #202225; /*1st darkest*/
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #36393f; /*3rd darkest*/
+}
+.note {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #0f0f0f;
+    background-color: #2f3136; /*2nd darkest*/
+}
+.note-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.note-title {
+    font-size: 32px;
+}
+.note-date {
+    font-size: 12px;
+}
+#footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #202225;
+}
+.footer-top {
+    display: flex;
+    flex-direction: row;
+}
+.footer-top > input:focus {
+    outline: none;
+}
+.footer-bottom {
+    display: flex;
+    flex-direction: row;
+}
+#description-input {
+    width: 100%;
+    line-height: 22px;
+    font-size: 16px;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    border: none;
+    outline: none;
+    resize: none;
+}
+#title-input {
+    width: 100%;
+}
+.note-input {
+    padding: 10px;
+    border: 1px solid #0f0f0f;
+    background-color: transparent;
+}
+.add-note {
+    width: 100px;
+    border: 1px solid #0f0f0f;
+    background-color: #5db8d7; /*blue*/
+}
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #2f3136; /*2nd darkest*/
+}
+.error-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #36393f; /*3rd darkest*/
+}
+.error > span {
+    color: #f15249; /*red*/
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
